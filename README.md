@@ -1,4 +1,5 @@
 # xingyun
-the news Community（新的社区）
+New community（新的社区）
 本社区由星光工作室-严子昱开发
-感谢你的支持
+感谢梦想之星工作室的支持
+以及所有为本站投稿的人
