@@ -47,7 +47,6 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	</head>
 	<body>
 	<div id="fh5co-offcanvass">
@@ -84,10 +83,195 @@
 			</div>
 		</div>
 	</header>
-	<div align="center"><a href="https://www.wenjuan.com/s/VjQJFvI/" target="_blank">
+	
+	<div align="center" style="width: 1000;">
+
+		<a href="https://www.wenjuan.com/s/VjQJFvI/" target="_blank">
 			<img src="images/xingxi.jpg" title="投稿/投诉/举报" width="300">
 		</a>
-		<h5>本站由学而思的星光工作室维护，联系QQ：2292068915；email：yanziyu252625@qq.com</h5></div>
+		<h5>本站由学而思的星光工作室维护，联系QQ：2292068915；email：yanziyu252625@qq.com</h5>
+
+		<style type="text/css">
+		#div1{display:black;width:110px;height:50px;line-height:50px;white-space:nowrap;overflow:hidden;background-color:#a2a2a2;margin:15px;padding:5px 15px;}
+		span{display:inline-block;color:#fff;padding-right:20px;}
+		</style>
+		
+		<style><!--
+		#list{border:#ccc 1px solid;}
+		#list div div{line-height:30px;text-align:center;border-right:#ccc 1px solid;}
+		#list{width:300px;height:30px;overflow:hidden;}/*必须的属性，宽度、高度可以自定义*/
+		#list div div{width:300px;height:30px;float:left;}/*必须的属性，宽度、高度最好与#list的定义一样*/
+		-->
+		</style>
+		<style mce_bogus="1">#list{border:#ccc 1px solid;}
+		#list div div{line-height:30px;text-align:center;border-right:#ccc 1px solid;}
+		#list{width:300px;height:30px;overflow:hidden;}/*必须的属性，宽度、高度可以自定义*/
+		#list div div{width:300px;height:30px;float:left;}/*必须的属性，宽度、高度最好与#list的定义一样*/</style>
+		<div id="list">
+		<div>
+		<div>没啥，就一条公告</div>
+		<div>没啥，就一条公告</div>
+		</div>
+		</div>
+		<script type="text/javascript"><!--
+		//主要的滚动函数
+		//如果滚动的效果正好是需要的效果
+		//那么你只需要直接调用这个函数即可
+		var moveTag=function(obj){
+		var _this = this;
+		_this.speed = 10;//移动的速度
+		_this.space = 10 * _this.speed;//移动间隔的时间
+		obj.scrollLeft=0;//初始化滚动的位置(主要是考虑到需要兼容FF)
+		var divList = obj.getElementsByTagName("DIV");
+		var obj2 = new Object();//包含所有滚动列的div
+		for(var i=0;i<divList.length;i++){
+		if(divList[i].parentNode==obj){
+		obj2=divList[i];
+		break;
+		}
+		}
+		//得到需要滚动的所有列
+		//divList循环两次的目的是为了不让样式名称影响滚动代码
+		//也就是尽可能的减少滚动代码与样式名称的耦合
+		var cellCount = 0;
+		_this.cellList = new Array();
+		for(var i=0;i<divList.length;i++){
+		if(divList[i].parentNode==obj2){
+		cellCount++;
+		_this.cellList.push(divList[i]);//需要滚动的所有列
+		}
+		}
+		_this.resetCellList=function(){
+		//这个函数主要是为了让滚动不间断
+		//在每次滚动到终点的时候需要使用
+		//将已经滚动过的列移到当前列之后
+		for(var i=0;i<_this.cellList.length-1;i++){
+		obj2.removeChild(_this.cellList[i]);
+		obj2.appendChild(_this.cellList[i]);
+		}
+		//重新获取_this.cellList
+		_this.cellList = new Array();
+		for(var i=0;i<divList.length;i++){
+		if(divList[i].parentNode==obj2) _this.cellList.push(divList[i]);
+		}
+		//alert(_this.cellList.length);
+		}
+		_this.resetForMoveRight=function(){
+		//这个函数主要是为了让滚动不间断
+		//与resetCellList的区别是这个函数是为了向右不间断滚动使用的
+		//在每次滚动到起点的时候需要使用
+		//将当前列之后的所有列移动到当前列之前
+		if(_this.cellList.length>0){
+		for(var i=_this.cellList.length-1;i>0;i--){
+		obj2.removeChild(_this.cellList[i]);
+		obj2.insertBefore(_this.cellList[i],obj2.childNodes[0]);
+		}
+		}
+		//重新获取_this.cellList
+		_this.cellList = new Array();
+		for(var i=0;i<divList.length;i++){
+		if(divList[i].parentNode==obj2) _this.cellList.push(divList[i]);
+		}
+		//alert(_this.cellList.length);
+		}
+		//alert(_this.cellList.length);
+		obj2.style.width = parseInt(obj.offsetWidth * cellCount) + "px";
+		//
+		//alert(_this.endScroll);
+		var cellScroll = obj.offsetWidth;//每次滚动需要滚动多少距离
+		var endScroll = obj2.offsetWidth - cellScroll;//计算滚动条的终点位置
+		//alert(_this.cellScroll);
+		//
+		_this.moveLength = cellScroll;//初始化移动偏量,为0的时候,在页面加载完毕之后将会立即移动;等于_this.cellScroll表示延迟一会再开始执行
+		_this.scrollEnd = false;
+		_this.scrollTimes = 0;
+		//休息一会儿
+		_this.sleep=function(){
+		_this.scrollTimes++;
+		if(_this.scrollTimes>=_this.space){
+		_this.scrollTimes=0;
+		_this.moveLength=0;
+		}
+		};
+		_this.moveStart = true;//是否开始移动
+		_this.isMoveLeft = true;//是否向左移动
+		_this.move=function(){
+		obj.onmouseover=function(){
+		_this.moveStart=false;
+		};
+		obj.onmouseout=function(){
+		_this.moveStart=true;
+		};
+		//重新设定cellList
+		if(obj.scrollLeft>=endScroll && _this.isMoveLeft){//向左移动，并且已经移动到尽头
+		if(_this.moveLength > 0) _this.moveLength = cellScroll;//调整
+		if(_this.cellList.length>0){
+		_this.resetCellList();//更新cellList
+		obj.scrollLeft=0;
+		}else{
+		_this.scrollEnd = true;
+		}
+		}else if(obj.scrollLeft<=0 && !_this.isMoveLeft){//向右移动，并且已经移动到尽头
+		if(_this.moveLength > 0) _this.moveLength = cellScroll;//调整
+		if(_this.cellList.length>0){
+		_this.resetForMoveRight();//更新cellList
+		obj.scrollLeft=endScroll;
+		}else{
+		_this.scrollEnd = false;
+		}
+		}
+		//
+		if(_this.scrollEnd){//向左移动
+		if(_this.moveLength<cellScroll && _this.moveStart){
+		obj.scrollLeft--;
+		_this.moveLength++;
+		}else if(_this.moveLength>=cellScroll){
+		_this.sleep();
+		}
+		}
+		else{//向右移动
+		if(_this.moveLength<cellScroll && _this.moveStart){
+		obj.scrollLeft++;
+		_this.moveLength++;
+		}else if(_this.moveLength>=cellScroll){
+		_this.sleep();
+		}
+		}
+		};
+		//自动
+		_this.start=function(){
+		setInterval(_this.move,_this.speed);
+		};
+		//右移动
+		_this.moveRight=function(){
+		_this.scrollEnd = true;//已经滚动到尽头
+		_this.isMoveLeft = false;//向右滚动
+		_this.scrollTimes=0;
+		};
+		//左移动
+		_this.moveLeft=function(){
+		_this.scrollEnd = false;//没有滚动到尽头
+		_this.isMoveLeft = true;//向左滚动
+		_this.scrollTimes=0;
+		};
+		};
+		// --></script>
+		<script type="text/javascript"><!--
+		var move=new moveTag(document.getElementById("list"));
+		move.start();
+		move.speed=10;//滚动的速度,默认为10
+		//move.space=0;//滚动间隔时间,默认为滚动速度 * 16
+		//左移动只能移动到最左边，无法一直向左移
+		//为了使滚动没有间断，所以最左边的坐标是不断变化的
+		//move.moveLeft();//这样可以设置默认自右向左移动
+		//move.moveRight();//与move.moveLeft()反方向
+		var moveLeft=move.moveLeft;
+		var moveRight=move.moveRight;
+		//想要一个页面上有N个地方滚动？
+		//没问题！只需要多new几个实例即可实现
+		// -->
+		</script>
+	</div>
 
 	<div id="fh5co-main">
 		<div class="container">
